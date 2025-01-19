@@ -65,7 +65,7 @@ done
 cp ./.zshrc "$HOME"
 
 # Installing tpm for tmux
-git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+git clone https://github.com/tmux-plugins/tpm $HOME/.config/tmux/plugins/tpm
 
 # Changing default shell
 echo "Changing Default Shell to zsh..."
@@ -98,10 +98,9 @@ sudo mv Dracula "$THEME_DIR"
 
 if [ -d "$HOME/.config/gtk-4.0" ]; then
 	mv "$HOME/.config/gtk-4.0" "$HOME/.config/gtk-4.0-old"
-	mkdir -p "$HOME/.config/gtk-4.0"
-else 
-	mkdir -p "$HOME/.config/gtk-4.0"
 fi
+
+mkdir -p "$HOME/.config/gtk-4.0"
 
 ln -s "$THEME_DIR/Dracula/gtk-4.0/assets" "$HOME/.config/gtk-4.0/assets"
 ln -s "$THEME_DIR/Dracula/gtk-4.0/gtk.css" "$HOME/.config/gtk-4.0/gtk.css"
