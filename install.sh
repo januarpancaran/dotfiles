@@ -83,7 +83,7 @@ else
 fi
 
 # Installing dracula gtk theme and icons
-THEME_DIR="/usr/share/themes"
+THEME_DIR="$HOME/.themes"
 
 if [ ! -d "$THEME_DIR" ]; then
 	mkdir -p "$THEME_DIR"
@@ -94,7 +94,7 @@ wget https://github.com/dracula/gtk/archive/master.zip
 unzip master.zip
 rm -rf master.zip
 mv gtk-master Dracula
-sudo mv Dracula "$THEME_DIR"
+mv Dracula "$THEME_DIR"
 
 if [ -d "$HOME/.config/gtk-4.0" ]; then
 	mv "$HOME/.config/gtk-4.0" "$HOME/.config/gtk-4.0-old"
@@ -106,7 +106,7 @@ ln -s "$THEME_DIR/Dracula/gtk-4.0/assets" "$HOME/.config/gtk-4.0/assets"
 ln -s "$THEME_DIR/Dracula/gtk-4.0/gtk.css" "$HOME/.config/gtk-4.0/gtk.css"
 ln -s "$THEME_DIR/Dracula/gtk-4.0/gtk-dark.css" "$HOME/.config/gtk-4.0/gtk-dark.css"
 
-ICON_DIR="/usr/share/icons"
+ICON_DIR="$HOME/.icons"
 
 if [ ! -d "$ICON_DIR" ]; then
 	mkdir -p "$ICON_DIR"
