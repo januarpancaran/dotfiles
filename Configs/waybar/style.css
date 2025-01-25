@@ -90,9 +90,6 @@ window#waybar {
   transition: none;
   color: #1e1e2e;
   background: #cba6f7;
-  border-style: solid;
-  border-width: 2px;
-  border-color: #1e1e2e;
 }
 
 #battery.charging {
