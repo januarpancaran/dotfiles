@@ -33,9 +33,9 @@ bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
 # History
-HIST_SIZE=10000
-HIST_FILE="~/.zsh_history"
-SAVEHIST=$HIST_SIZE
+HISTSIZE=10000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
 HISTDUP=erase
 setopt appendhistory
 setopt sharehistory
