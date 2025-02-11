@@ -3,33 +3,33 @@
 # Checking aur helper
 AUR_HELPER=""
 if [ -f /usr/bin/yay ]; then
-        AUR_HELPER="yay"
+	AUR_HELPER="yay"
 elif [ -f /usr/bin/paru ]; then
-        AUR_HELPER="paru"
-else 
-        echo "No AUR Helper installed. Installing yay"
-        sudo pacman -S base-devel git --needed
-        git clone https://aur.archlinux.org/yay.git
-        cd yay
-        makepkg -si --noconfirm
-        cd ..
-        rm -rf yay
-        
-        echo "yay installed!"
-        AUR_HELPER="yay"
+	AUR_HELPER="paru"
+else
+	echo "No AUR Helper installed. Installing yay"
+	sudo pacman -S base-devel git --needed
+	git clone https://aur.archlinux.org/yay.git
+	cd yay
+	makepkg -si --noconfirm
+	cd ..
+	rm -rf yay
+
+	echo "yay installed!"
+	AUR_HELPER="yay"
 fi
 
 # Installing needed packages
 echo "Installing Packages..."
-$AUR_HELPER -S base-devel bluez bluez-utils networkmanager hyprland ghostty polkit-gnome brightnessctl pipewire wireplumber waybar dunst hypridle hyprlock rofi-wayland swww wlogout qt5-wayland qt6-wayland xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xwaylandvideobridge grim slurp wl-clipboard htop trash-cli alsa-utils alsa-firmware pipewire-pulse pipewire-alsa blueberry xorg-xhost bat fastfetch eog unzip unrar wget openssh xdg-desktop-portal libnotify zoxide playerctl fzf ripgrep pavucontrol acpi neovim firefox mpv zsh starship nodejs cronie nautilus npm gvfs-mtp gvfs-afc tmux network-manager-applet xdg-desktop-portal-wlr papirus-icon-theme gtk-engine-murrine gnome-themes-extra --needed --noconfirm
+$AUR_HELPER -S base-devel bluez bluez-utils networkmanager hyprland ghostty polkit-gnome brightnessctl pipewire wireplumber waybar dunst hypridle hyprlock rofi-wayland swww wlogout qt5-wayland qt6-wayland xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xwaylandvideobridge grim slurp wl-clipboard htop trash-cli alsa-utils alsa-firmware pipewire-pulse pipewire-alsa blueberry xorg-xhost bat fastfetch eog unzip unrar wget openssh xdg-desktop-portal libnotify zoxide playerctl fzf ripgrep pavucontrol acpi neovim firefox mpv zsh starship nodejs cronie nautilus npm gvfs-mtp gvfs-afc tmux network-manager-applet xdg-desktop-portal-wlr papirus-icon-theme gtk-engine-murrine gnome-themes-extra --needed gnome-control-center --noconfirm
 
 # Installing needed fonts
 echo "Installing Fonts..."
-$AUR_HELPER -S ttf-meslo-nerd ttf-jetbrains-mono-nerd ttf-space-mono-nerd otf-font-awesome ttf-material-symbols-variable-git noto-fonts-emoji noto-fonts-cjk --noconfirm 
+$AUR_HELPER -S ttf-meslo-nerd ttf-jetbrains-mono-nerd ttf-space-mono-nerd otf-font-awesome ttf-material-symbols-variable-git noto-fonts-emoji noto-fonts-cjk --noconfirm
 
 # Enabling Services
 sudo systemctl enable --now NetworkManager bluetooth cronie
-systemctl enable --user --now pipewire.socket pipewire.service 
+systemctl enable --user --now pipewire.socket pipewire.service
 
 # Moving all the dotfiles
 if [ ! -d "$HOME/.config" ]; then
@@ -127,7 +127,7 @@ if [ ! -d "$SYSTEMD_DIR" ]; then
 fi
 
 # Battery notification
-cat > "$SYSTEMD_DIR/batterynotify.service" <<EOF
+cat >"$SYSTEMD_DIR/batterynotify.service" <<EOF
 [Unit] 
 Description=Battery Notification Script
 
@@ -135,7 +135,7 @@ Description=Battery Notification Script
 ExecStart=%h/.local/bin/batterynotify
 EOF
 
-cat > "$SYSTEMD_DIR/batterynotify.timer" <<EOF
+cat >"$SYSTEMD_DIR/batterynotify.timer" <<EOF
 [Unit]
 Description=Run Battery Notification Script every 5 minutes
 
@@ -148,7 +148,7 @@ WantedBy=timers.target
 EOF
 
 # Trash emptying
-cat > "$SYSTEMD_DIR/trash-empty.service" <<EOF
+cat >"$SYSTEMD_DIR/trash-empty.service" <<EOF
 [Unit] 
 Description=Empty Trash older than 30 days
 
@@ -156,7 +156,7 @@ Description=Empty Trash older than 30 days
 ExecStart=/sbin/trash-empty 30
 EOF
 
-cat > "$SYSTEMD_DIR/trash-empty.timer" <<EOF
+cat >"$SYSTEMD_DIR/trash-empty.timer" <<EOF
 [Unit]
 Description=Run Trash Emptying Daily
 
