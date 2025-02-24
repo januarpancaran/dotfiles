@@ -6,7 +6,7 @@ function send_notification() {
     BRIGHTNESS=$(brightnessctl get)
     MAX_BRIGHTNESS=$(brightnessctl max)
     PERCENTAGE=$((BRIGHTNESS * 100 / MAX_BRIGHTNESS))
-    dunstify -a "changebrightness" -u low -r 9994 -h int:value:"$PERCENTAGE" -i "$ICON_DIR/brightness-change.png" "Brightness: ${PERCENTAGE}%" -t 2000
+    notify-send -a "changebrightness" -u low -r 9994 -h int:value:"$PERCENTAGE" -i "$ICON_DIR/brightness-change.png" "Brightness: ${PERCENTAGE}%" -t 2000
 }
 
 case $1 in

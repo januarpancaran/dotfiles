@@ -4,7 +4,7 @@ ICON_DIR="$HOME/.config/dunst/assets"
 
 function send_notification() {
 	VOLUME=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2 * 100)}')
-	dunstify -a "changevolume" -u low -r 9993 -h int:value:"$VOLUME" -i "$1" "Volume: ${VOLUME}%" -t 2000
+	notify-send -a "changevolume" -u low -r 9993 -h int:value:"$VOLUME" -i "$1" "Volume: ${VOLUME}%" -t 2000
 }
 
 case $1 in
