@@ -11,5 +11,6 @@ You don't need to back up your existing config files since this script will back
 ```bash
 git clone --depth 1 https://github.com/januarpancaran/dotfiles.git
 cd dotfiles
+git checkout {branch-name} # main is Arch
 ./install.sh
 ```
