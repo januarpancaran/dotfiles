@@ -9,9 +9,7 @@
     "hyprland/window",
     "mpris",
   ],
-  "modules-center": [
-    "clock"
-  ],
+  "modules-center": ["clock"],
   "modules-right": [
     "pulseaudio",
     "bluetooth",
@@ -87,9 +85,7 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": [
-        " "
-      ],
+      "default": [" "],
     },
     "on-click": "pavucontrol",
     "min-length": 13,
@@ -106,7 +102,7 @@
     "tooltip-format-connected-battery": "{device_alias}: {device_battery_percentage}%",
     "tooltip-format-enumerate-connected": "{device_alias}",
     "tooltip-format-enumerate-connected-battery": "{device_alias}: {device_battery_percentage}%",
-    "on-click": "blueberry",
+    "on-click": "blueman-manager",
     "min-length": 2,
   },
   "network": {
@@ -120,17 +116,7 @@
   },
   "backlight": {
     "format": "{icon}",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
-    ],
+    "format-icons": ["", "", "", "", "", "", "", "", ""],
   },
   "battery": {
     "states": {
@@ -142,13 +128,7 @@
     "format-charging": "{capacity}% ",
     "format-plugged": "{capacity}% ",
     "format-alt": "{time} {icon}",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ],
+    "format-icons": ["", "", "", "", ""],
   },
   "tray": {
     "icon-size": 16,
