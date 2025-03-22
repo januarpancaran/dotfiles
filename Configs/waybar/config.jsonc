@@ -6,8 +6,7 @@
   "modules-left": [
     "custom/power",
     "hyprland/workspaces",
-    "hyprland/window",
-    "mpris",
+    "hyprland/window"
   ],
   "modules-center": [
     "clock"
@@ -54,17 +53,6 @@
     "icon-size": 20,
     "rewrite": {
       "": " hyprland",
-    },
-  },
-  "mpris": {
-    "format": "{player_icon} {title} - {artist}",
-    "format-paused": "{status_icon} {title} - {artist}",
-    "max-length": 30,
-    "player-icons": {
-      "default": "▶",
-    },
-    "status-icons": {
-      "paused": "⏸",
     },
   },
   // Center module
@@ -115,7 +103,7 @@
     "tooltip-format": "{essid}",
     "format-linked": "{ifname} (No IP) 󰈀",
     "format-disconnected": "Disconnected ⚠",
-    "on-click": "nm-connection-editor",
+    "on-click": "ghostty -e nmtui",
     "min-length": 2,
   },
   "backlight": {
