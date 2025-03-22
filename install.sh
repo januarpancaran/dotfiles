@@ -21,7 +21,7 @@ fi
 
 # Installing needed packages
 echo "Installing Packages..."
-$AUR_HELPER -S base-devel bluez bluez-utils networkmanager hyprland ghostty polkit-gnome brightnessctl pipewire wireplumber waybar dunst hypridle hyprlock rofi-wayland swww wlogout qt5-wayland qt6-wayland xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xwaylandvideobridge grim slurp wl-clipboard htop trash-cli alsa-utils alsa-firmware pipewire-pulse pipewire-alsa blueberry xorg-xhost bat fastfetch eog unzip unrar wget openssh xdg-desktop-portal libnotify zoxide playerctl fzf ripgrep pavucontrol acpi neovim firefox mpv zsh starship nodejs cronie nautilus npm gvfs-mtp gvfs-afc tmux network-manager-applet xdg-desktop-portal-wlr papirus-icon-theme gtk-engine-murrine gnome-themes-extra --needed gnome-control-center --noconfirm
+$AUR_HELPER -S base-devel bluez bluez-utils networkmanager hyprland ghostty polkit-gnome brightnessctl pipewire wireplumber waybar dunst hypridle hyprlock rofi-wayland swww wlogout qt5-wayland qt6-wayland xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xwaylandvideobridge grim slurp wl-clipboard htop trash-cli alsa-utils alsa-firmware pipewire-pulse pipewire-alsa blueberry xorg-xhost bat fastfetch eog unzip unrar wget openssh xdg-desktop-portal libnotify zoxide playerctl fzf ripgrep pavucontrol acpi neovim firefox mpv zsh starship nodejs cronie nautilus npm gvfs-mtp gvfs-afc tmux network-manager-applet xdg-desktop-portal-wlr papirus-icon-theme gtk-engine-murrine gnome-themes-extra gnome-control-center dracula-gtk-theme dracula-icons-theme --needed --noconfirm
 
 # Installing needed fonts
 echo "Installing Fonts..."
@@ -83,40 +83,7 @@ else
 fi
 
 # Installing dracula gtk theme and icons
-THEME_DIR="$HOME/.themes"
-
-if [ ! -d "$THEME_DIR" ]; then
-	mkdir -p "$THEME_DIR"
-fi
-
-echo "Installing dracula gtk theme..."
-wget https://github.com/dracula/gtk/archive/master.zip
-unzip master.zip
-rm -rf master.zip
-mv gtk-master Dracula
-mv Dracula "$THEME_DIR"
-
-if [ -d "$HOME/.config/gtk-4.0" ]; then
-	mv "$HOME/.config/gtk-4.0" "$HOME/.config/gtk-4.0-old"
-fi
-
-mkdir -p "$HOME/.config/gtk-4.0"
-
-ln -s "$THEME_DIR/Dracula/gtk-4.0/assets" "$HOME/.config/gtk-4.0/assets"
-ln -s "$THEME_DIR/Dracula/gtk-4.0/gtk.css" "$HOME/.config/gtk-4.0/gtk.css"
-ln -s "$THEME_DIR/Dracula/gtk-4.0/gtk-dark.css" "$HOME/.config/gtk-4.0/gtk-dark.css"
-
-ICON_DIR="$HOME/.icons"
-
-if [ ! -d "$ICON_DIR" ]; then
-	mkdir -p "$ICON_DIR"
-fi
-
-echo "Installing dracula icons..."
-wget https://github.com/dracula/gtk/files/5214870/Dracula.zip
-unzip Dracula.zip
-rm -rf Dracula.zip
-sudo mv Dracula "$ICON_DIR"
+ln -s /usr/share/themes/Dracula/gtk-4.0 $HOME/.config/gtk-4.0
 
 # Systemd timers
 echo "Creating systemd timers..."
