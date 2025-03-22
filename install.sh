@@ -3,25 +3,25 @@
 # Checking aur helper
 AUR_HELPER=""
 if [ -f /usr/bin/yay ]; then
-	AUR_HELPER="yay"
+  AUR_HELPER="yay"
 elif [ -f /usr/bin/paru ]; then
-	AUR_HELPER="paru"
+  AUR_HELPER="paru"
 else
-	echo "No AUR Helper installed. Installing yay"
-	sudo pacman -S base-devel git --needed
-	git clone https://aur.archlinux.org/yay.git
-	cd yay
-	makepkg -si --noconfirm
-	cd ..
-	rm -rf yay
+  echo "No AUR Helper installed. Installing yay"
+  sudo pacman -S base-devel git --needed
+  git clone https://aur.archlinux.org/yay.git
+  cd yay
+  makepkg -si --noconfirm
+  cd ..
+  rm -rf yay
 
-	echo "yay installed!"
-	AUR_HELPER="yay"
+  echo "yay installed!"
+  AUR_HELPER="yay"
 fi
 
 # Installing needed packages
 echo "Installing Packages..."
-$AUR_HELPER -S base-devel bluez bluez-utils networkmanager hyprland ghostty polkit-gnome brightnessctl pipewire wireplumber waybar dunst hypridle hyprlock rofi-wayland swww wlogout qt5-wayland qt6-wayland xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xwaylandvideobridge grim slurp wl-clipboard htop trash-cli alsa-utils alsa-firmware pipewire-pulse pipewire-alsa blueberry xorg-xhost bat fastfetch eog unzip unrar wget openssh xdg-desktop-portal libnotify zoxide playerctl fzf ripgrep pavucontrol acpi neovim firefox mpv zsh starship nodejs cronie nautilus npm gvfs-mtp gvfs-afc tmux network-manager-applet xdg-desktop-portal-wlr papirus-icon-theme gtk-engine-murrine gnome-themes-extra gnome-control-center dracula-gtk-theme dracula-icons-theme --needed --noconfirm
+$AUR_HELPER -S base-devel bluez bluez-utils networkmanager hyprland ghostty polkit-gnome brightnessctl pipewire wireplumber waybar dunst hypridle hyprlock rofi-wayland swww wlogout qt5-wayland qt6-wayland xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xwaylandvideobridge grim slurp wl-clipboard htop trash-cli alsa-utils alsa-firmware pipewire-pulse pipewire-alsa blueberry xorg-xhost bat fastfetch eog unzip unrar wget openssh xdg-desktop-portal libnotify zoxide playerctl fzf ripgrep pavucontrol acpi neovim firefox mpv zsh starship nodejs cronie nautilus npm gvfs-mtp gvfs-afc tmux network-manager-applet xdg-desktop-portal-wlr papirus-icon-theme gtk-engine-murrine gnome-themes-extra gnome-control-center dracula-gtk-theme dracula-icons-theme bibata-cursor-theme-bin --needed --noconfirm
 
 # Installing needed fonts
 echo "Installing Fonts..."
@@ -33,32 +33,32 @@ systemctl enable --user --now pipewire.socket pipewire.service
 
 # Moving all the dotfiles
 if [ ! -d "$HOME/.config" ]; then
-	mkdir -p "$(dirname $HOME/.config)"
+  mkdir -p "$(dirname $HOME/.config)"
 fi
 
 CONFIG_SRC="./Configs/"
 CONFIG_DES="$HOME/.config"
 
 for dirs in "$CONFIG_SRC"*; do
-	base_dirs=$(basename "$dirs")
-	des_dirs="$CONFIG_DES/$base_dirs"
+  base_dirs=$(basename "$dirs")
+  des_dirs="$CONFIG_DES/$base_dirs"
 
-	if [ -d "$des_dirs" ]; then
-		mv -v "$des_dirs" "${des_dirs}-old"
-	fi
+  if [ -d "$des_dirs" ]; then
+    mv -v "$des_dirs" "${des_dirs}-old"
+  fi
 
-	cp -r "$dirs" "$des_dirs"
+  cp -r "$dirs" "$des_dirs"
 done
 
 LOCAL_BIN_SRC="./.local/bin/"
 LOCAL_BIN_DES="$HOME/.local/bin/"
 
 if [ ! -d "$LOCAL_BIN_DES" ]; then
-	mkdir -p "$LOCAL_BIN_DES"
+  mkdir -p "$LOCAL_BIN_DES"
 fi
 
 for files in "$LOCAL_BIN_SRC"*; do
-	cp "$files" "$LOCAL_BIN_DES"
+  cp "$files" "$LOCAL_BIN_DES"
 done
 
 # Moving zshrc
@@ -73,13 +73,13 @@ echo "Change Shell? [y/N]"
 read -r confirmation
 
 if [[ "$confirmation" =~ ^[Yy]$ ]]; then
-	if chsh -s "$(which zsh)"; then
-		echo "Default shell changed successfully."
-	else
-		echo "Failed to change default shell."
-	fi
+  if chsh -s "$(which zsh)"; then
+    echo "Default shell changed successfully."
+  else
+    echo "Failed to change default shell."
+  fi
 else
-	echo "Default shell not changed."
+  echo "Default shell not changed."
 fi
 
 # Installing dracula gtk theme and icons
@@ -90,7 +90,7 @@ echo "Creating systemd timers..."
 SYSTEMD_DIR="$HOME/.config/systemd/user/"
 
 if [ ! -d "$SYSTEMD_DIR" ]; then
-	mkdir -p "$SYSTEMD_DIR"
+  mkdir -p "$SYSTEMD_DIR"
 fi
 
 # Battery notification
@@ -150,8 +150,8 @@ WAYLAND_DISPLAY="wayland-0"
 DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
 
 if [ ! -x "$CHARGING_NOTIFY_SCRIPT" ]; then
-	echo "Error: $CHARGING_NOTIFY_SCRIPT does not exist or is not executable."
-	exit 1
+  echo "Error: $CHARGING_NOTIFY_SCRIPT does not exist or is not executable."
+  exit 1
 fi
 
 # Creating the udev rules
