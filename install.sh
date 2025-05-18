@@ -21,7 +21,7 @@ fi
 
 # Installing needed packages
 echo "Installing Packages..."
-$AUR_HELPER -S --needed --noconfirm base-devel bluez bluez-utils networkmanager hyprland ghostty polkit-gnome brightnessctl pipewire wireplumber waybar dunst hypridle hyprlock rofi-wayland hyprpaper wlogout qt5-wayland qt6-wayland xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xwaylandvideobridge hyprshot wl-clipboard htop trash-cli alsa-utils alsa-firmware pipewire-pulse pipewire-alsa blueberry xorg-xhost bat fastfetch eog unzip zip unrar wget openssh xdg-desktop-portal libnotify zoxide playerctl fzf ripgrep pavucontrol acpi neovim google-chrome mpv zsh starship nodejs cronie nautilus npm gvfs-mtp gvfs-afc tmux network-manager-applet xdg-desktop-portal-wlr papirus-icon-theme gtk-engine-murrine gnome-themes-extra gnome-control-center dracula-gtk-theme dracula-icons-theme bibata-cursor-theme-bin yazi
+$AUR_HELPER -S --needed --noconfirm base-devel bluez bluez-utils networkmanager hyprland ghostty polkit-gnome brightnessctl pipewire wireplumber waybar dunst hypridle hyprlock rofi-wayland hyprpaper wlogout qt5-wayland qt6-wayland xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xwaylandvideobridge hyprshot wl-clipboard htop trash-cli alsa-utils alsa-firmware pipewire-pulse pipewire-alsa blueberry xorg-xhost bat fastfetch eog unzip zip unrar wget openssh xdg-desktop-portal libnotify zoxide playerctl fzf ripgrep pavucontrol acpi neovim google-chrome mpv zsh starship nodejs cronie nautilus npm gvfs-mtp gvfs-afc tmux network-manager-applet xdg-desktop-portal-wlr papirus-icon-theme gtk-engine-murrine gnome-themes-extra gnome-control-center dracula-gtk-theme dracula-icons-theme bibata-cursor-theme-bin yazi visual-studio-code-bin
 
 # Installing needed fonts
 echo "Installing Fonts..."
