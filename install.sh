@@ -8,7 +8,7 @@ fi
 
 # Installing needed packages
 echo "Installing Packages..."
-sudo zypper install -y bluez NetworkManager hyprland hyprland-qtutils ghostty polkit brightnessctl pipewire wireplumber waybar dunst hypridle hyprlock rofi-wayland swww wlogout libqt5-qtwayland libQt6WaylandClient6 libQt6WaylandCompositor6 libQt6WaylandEglClientHwIntegration6 libQt6WaylandEglCompositorHwIntegration6 xdg-desktop-portal-hyprland xdg-desktop-portal-gtk grim slurp wl-clipboard htop trash-cli alsa-utils alsa-firmware pipewire-pulseaudio pipewire-alsa blueman xhost bat fastfetch eog unzip unrar wget openssh xdg-desktop-portal libnotify4 zoxide playerctl fzf ripgrep pavucontrol acpi neovim MozillaFirefox mpv zsh starship nodejs22 cronie nautilus gvfs gvfs-backends gvfs-backend-afc tmux NetworkManager-applet xdg-desktop-portal-wlr papirus-icon-theme gtk2-engine-murrine gnome-themes-extras gnome-control-center libnotify-tools yazi
+sudo zypper install -y bluez NetworkManager hyprland hyprland-qtutils ghostty polkit brightnessctl pipewire wireplumber waybar dunst hypridle hyprlock rofi-wayland hyprpaper wlogout libqt5-qtwayland libQt6WaylandClient6 libQt6WaylandCompositor6 libQt6WaylandEglClientHwIntegration6 libQt6WaylandEglCompositorHwIntegration6 xdg-desktop-portal-hyprland xdg-desktop-portal-gtk hyprshot wl-clipboard htop trash-cli alsa-utils alsa-firmware pipewire-pulseaudio pipewire-alsa blueman xhost bat fastfetch eog unzip unrar wget openssh xdg-desktop-portal libnotify4 zoxide playerctl fzf ripgrep pavucontrol acpi neovim MozillaFirefox mpv zsh starship nodejs22 cronie nautilus gvfs gvfs-backends gvfs-backend-afc tmux NetworkManager-applet xdg-desktop-portal-wlr papirus-icon-theme gtk2-engine-murrine gnome-themes-extras gnome-control-center libnotify-tools yazi polkit-gnome 
 
 # Installing needed fonts
 echo "Installing Fonts..."
@@ -18,17 +18,12 @@ mkdir ~/.fonts
 mkdir fonts
 cd fonts
 
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/JetBrainsMono.zip
+curl -LO https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/JetBrainsMono.zip
 unzip JetBrainsMono.zip
 mv *.ttf ~/.fonts
 rm -rf *
 
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Meslo.zip
-unzip Meslo.zip
-mv *.ttf ~/.fonts
-rm -rf *
-
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/SpaceMono.zip
+curl -LO https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/SpaceMono.zip
 unzip SpaceMono.zip
 mv *.ttf ~/.fonts
 rm -rf *
@@ -36,6 +31,17 @@ cd ..
 
 rm -rf fonts
 fc-cache -vf
+
+mkdir ~/.icons
+mkdir icons
+cd icons
+
+curl -LO https://github.com/ful1e5/Bibata_Cursor/releases/download/v2.0.7/Bibata-Modern-Classic.tar.xz
+tar -xvf Bibata-Modern-Classic.tar.xz
+mv * ~/.icons
+cd ..
+
+rm -rf icons
 
 # Enabling Services
 sudo systemctl enable --now NetworkManager bluetooth 

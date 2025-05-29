@@ -69,7 +69,14 @@ window#waybar {
   border-color: #cba6f7;
 }
 
-#window, #mpris, #pulseaudio, #bluetooth, #network, #backlight, #battery, #custom-notification, #tray {
+#window,
+#pulseaudio,
+#bluetooth,
+#network,
+#backlight,
+#battery,
+#custom-notification,
+#tray {
   margin-right: 8px;
   padding-left: 16px;
   padding-right: 16px;
