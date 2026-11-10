@@ -1,0 +1,51 @@
+[widget.clock]
+color = "primary"
+format = "{:%H:%M}"
+tooltip_format = "{:%A, %B %d, %Y}"
+font_weight = 600
+capsule = true
+
+[widget.launcher]
+glyph = "rocket"
+
+[widget.workspaces]
+style = "minimal"
+show_labels = true
+label_source = "id"
+max_label_chars = 1
+
+[widget."active-window"]
+type = "active_window"
+color = "primary"
+min_length = 80
+max_length = 220
+display = "icon_and_text"
+title_scroll = "on_hover"
+capsule = false
+
+[widget.media]
+max_length = 180
+hide_when_no_media = true
+title_scroll = "on_hover"
+
+[widget.tray]
+drawer = true
+hide_passive = false
+drawer_columns = 3
+
+[widget.volume]
+color = "primary"
+show_label = true
+
+[widget.brightness]
+show_label = false
+
+[widget.network]
+show_label = false
+
+[widget.bluetooth]
+show_label = false
+hide_when_no_connected_device = false
+
+[widget."control-center"]
+glyph = "home"

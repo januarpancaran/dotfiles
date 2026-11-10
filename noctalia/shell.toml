@@ -1,0 +1,13 @@
+[shell]
+font_family = "Sans Serif"
+corner_radius_scale = 1.0
+button_borders = true
+card_borders = true
+popup_borders = true
+popup_shadows = true
+telemetry_enabled = false
+clipboard_enabled = false
+launch_apps_as_systemd_services = false
+
+[shell.panel]
+launcher_placement = "attached"

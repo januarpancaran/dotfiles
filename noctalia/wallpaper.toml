@@ -1,0 +1,5 @@
+[wallpaper]
+enabled = true
+directory = "/home/yuhshi/Pictures/Wallpapers"
+fill_mode = "crop"
+transition_duration = 1500

@@ -1,0 +1,34 @@
+[bar.default]
+position = "top"
+thickness = 36
+background_opacity = 0.93
+margin_ends = 0
+margin_edge = 0
+reserve_space = true
+radius = 0
+padding = 12
+widget_spacing = 8
+capsule = true
+capsule_fill = "surface_container"
+capsule_foreground = "on_surface"
+color = "on_surface"
+icon_color = "primary"
+capsule_border = "outline_variant"
+capsule_opacity = 0.86
+show_on_workspace_switch = true
+start = [
+  "launcher",
+  "workspaces",
+  "active-window",
+]
+center = [ "clock" ]
+end = [
+  "profidev/hypr-screen-mirror:widget",
+  "tray",
+  "volume",
+  "brightness",
+  "bluetooth",
+  "network",
+  "battery",
+  "control-center",
+]
