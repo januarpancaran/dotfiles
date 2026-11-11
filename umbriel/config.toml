@@ -1,0 +1,30 @@
+# https://docs.noctalia.dev/umbriel/configuration/
+
+[include]
+files = [
+  "autostart.toml",
+  "env.toml",
+  "inputs.toml",
+  "outputs.toml",
+  "appearance.toml",
+  "binds.toml",
+  "rules.toml",
+]
+
+[include.optional]
+files = []
+
+[general]
+mod_key = "Super"
+xwayland = true
+xwayland_native_resolution = true
+show_cheatsheet = false
+
+[events]
+lid_close = "umbriel msg output-disable eDP-1"
+lid_open = "umbriel msg output-enable eDP-1"
+
+[hot_corners.top_left]
+enabled = true
+delay_ms = 500
+action = "overview-open"
