@@ -1,4 +1,4 @@
 [plugins]
 enabled = [
-  "profidev/hypr-screen-mirror",
+  "elijaharch/wl-screen-mirror"
 ]
