@@ -2,7 +2,7 @@
 autostart = [
   # "fcitx5 -d -r",
   # "fcitx5-remote -d -r",
-  "noctalia --daemon",
+  "noctalia",
   "/usr/libexec/polkit-gnome-authentication-agent-1",
   "gsettings set org.gnome.desktop.interface gtk-theme Dracula",
   "gsettings set org.gnome.desktop.interface icon-theme Tela-nord-dark",
