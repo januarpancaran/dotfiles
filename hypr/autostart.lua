@@ -103,7 +103,8 @@ hl.on("hyprland.start", function()
   compact_running = false
 
   -- Launch startup programs
-  hl.exec_cmd("noctalia --daemon")
+  hl.exec_cmd("/usr/libexec/polkit-gnome-authentication-agent-1")
+  hl.exec_cmd("noctalia")
   hl.exec_cmd("gsettings set org.gnome.desktop.interface gtk-theme Dracula")
   hl.exec_cmd("gsettings set org.gnome.desktop.interface icon-theme Tela-nord-dark")
   hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-theme Bibata-Modern-Classic")
