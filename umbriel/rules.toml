@@ -11,6 +11,7 @@ background_render = true
 [[window_rule]]
 match.app_id = "^steam_app_.*$"
 background_render = true
+default_floating = true
 
 [[window_rule]]
 match.app_id = "^dev.noctalia.Noctalia$"
