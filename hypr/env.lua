@@ -19,9 +19,6 @@ hl.env("ELECTRON_OZONE_PLATFORM_HINT", "wayland")
 -- Mozilla apps
 hl.env("MOZ_ENABLE_WAYLAND", "1")
 
--- NixOS
-hl.env("NIXOS_OZONE_WL", "1")
-
 -- Cursor configuration
 hl.env("XCURSOR_THEME", "Bibata-Modern-Classic")
 hl.env("XCURSOR_SIZE", "24")
