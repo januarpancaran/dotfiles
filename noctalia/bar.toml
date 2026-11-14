@@ -24,7 +24,6 @@ start = [
 center = [ "clock" ]
 end = [
   "tray",
-  "elijaharch/wl-screen-mirror:mirror",
   "volume",
   "brightness",
   "bluetooth",
