@@ -48,6 +48,7 @@ systemd-resolved
 telegram-desktop
 unrar
 wl-clipboard
+wlsunset
 yazi 
 zoxide
 zram-generator
