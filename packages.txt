@@ -19,6 +19,7 @@ gdm
 gh
 ghostty
 git
+gnome-keyring
 go
 google-noto-coloremoji-fonts
 google-noto-fonts
