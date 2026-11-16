@@ -1,2 +1,4 @@
 [plugins]
-enabled = []
+enabled = [
+  "elijaharch/wl-screen-mirror"
+]
