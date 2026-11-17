@@ -1,74 +1,71 @@
 # Zypper
-brave-origin # needs addrepo
-umbriel-git # needs addrepo
-7zip
-ImageMagick 
-ProtonPlus
-chafa 
-discord
-docker 
-docker-compose 
-docker-compose-switch
-fastfetch
-fd 
-fetchmsttfonts
-ffmpegthumbnailer 
-fzf
-gamemode
-gdm
-gh
-ghostty
-git
-gnome-keyring
-go
-google-noto-coloremoji-fonts
-google-noto-fonts
-google-noto-sans-cjk-fonts
-grim
-java-26-openjdk
-libnotify-tools
-loupe
-mariadb
-mpv
-neovim
-noctalia
-obs-studio
-papers
-polkit-gnome
-postgresql 
-postgresql-contrib
-postgresql-server 
-postgresql18-pgvector
-ripgrep
-ruby
-slurp
-starship
-steam
-systemd-resolved
-telegram-desktop
-unrar
-wl-clipboard
-wlsunset
-yazi 
-zoxide
-zram-generator
-zsh
-
-# If hyprland
-hyprland 
-hyprland-devel 
-hyprland-guiutils 
-xdg-desktop-portal-hyprland 
-socat
+7zip \
+ImageMagick  \
+ProtonPlus \
+brave-origin  \
+chafa  \
+discord \
+docker  \
+docker-compose  \
+docker-compose-switch \
+fastfetch \
+fd  \
+fetchmsttfonts \
+ffmpegthumbnailer  \
+fzf \
+gamemode \
+gdm \
+gh \
+ghostty \
+git \
+gnome-keyring \
+go \
+google-noto-coloremoji-fonts \
+google-noto-fonts \
+google-noto-sans-cjk-fonts \
+grim \
+hyprland  \
+hyprland-devel  \
+hyprland-guiutils  \
+java-26-openjdk \
+libnotify-tools \
+loupe \
+mariadb \
+mpv \
+neovim \
+noctalia \
+obs-studio \
+papers \
+polkit-gnome \
+postgresql  \
+postgresql-contrib \
+postgresql-server  \
+postgresql18-pgvector \
+ripgrep \
+ruby \
+slurp \
+socat \
+starship \
+steam \
+systemd-resolved \
+telegram-desktop \
+unrar \
+wl-clipboard \
+wlsunset \
+xdg-desktop-portal-hyprland  \
+yazi  \
+zoxide \
+zram-generator \
+zsh \
 
 # Services
-docker
-gdm
-mariadb
-postgresql
-power-profiles-daemon
-systemd-resolved
-zram-generator
+docker \
+gdm \
+mariadb \
+postgresql \
+power-profiles-daemon \
+systemd-resolved \
+systemd-zram-setup@zram0.service \
 
 # Group
 docker
