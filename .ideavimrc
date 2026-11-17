@@ -1,0 +1,12 @@
+" JetBrains IDEs IdeaVim's vimrc
+
+if has("win32") || has("win64")
+    source $USERPROFILE/vimfiles/vimrc
+else
+    source $HOME/.vimrc
+endif
+
+set commentary
+set ideajoin
+set idearefactormode=keep
+set ideastrictmode
