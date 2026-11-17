@@ -74,10 +74,11 @@ zram-generator
 docker
 
 # Opi
-codecs
-spotify
-onlyoffice
-zotero
 bibata
-dracula
+codecs
 dotnet
+dracula
+onlyoffice
+spotify
+vscode
+zotero

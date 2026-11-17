@@ -5,7 +5,7 @@
 "Mod+B" = { action = "spawn brave-origin", repeat = false }
 "Mod+I" = { action = "spawn brave-origin --incognito", repeat = false }
 "Mod+E" = { action = "spawn nautilus", repeat = false }
-"Mod+C" = { action = "spawn zed", repeat = false }
+"Mod+C" = { action = "spawn code", repeat = false }
 "Mod+Shift+C" = { action = "spawn env XDG_CURRENT_DESKTOP=gnome gnome-control-center", repeat = false }
 "Mod+Semicolon" = { action = "spawn env -u DISPLAY spotify --enable-wayland-ime", repeat = false }
 "Mod+D" = { action = "spawn discord", repeat = false }
