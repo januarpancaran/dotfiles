@@ -2,6 +2,7 @@
 7zip \
 ImageMagick  \
 ProtonPlus \
+bat \
 brave-origin  \
 chafa  \
 discord \
@@ -18,6 +19,7 @@ gdm \
 gh \
 ghostty \
 git \
+gnome-control-center \
 gnome-keyring \
 go \
 google-noto-coloremoji-fonts \
@@ -41,6 +43,7 @@ postgresql  \
 postgresql-contrib \
 postgresql-server  \
 postgresql18-pgvector \
+power-profiles-daemon \
 ripgrep \
 ruby \
 slurp \
@@ -49,6 +52,7 @@ starship \
 steam \
 systemd-resolved \
 telegram-desktop \
+trash-cli \
 unrar \
 wl-clipboard \
 wlsunset \
