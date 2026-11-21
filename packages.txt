@@ -26,9 +26,6 @@ google-noto-coloremoji-fonts \
 google-noto-fonts \
 google-noto-sans-cjk-fonts \
 grim \
-hyprland  \
-hyprland-devel  \
-hyprland-guiutils  \
 java-26-openjdk \
 libnotify-tools \
 loupe \
@@ -54,11 +51,11 @@ steam \
 systemd-resolved \
 telegram-desktop \
 trash-cli \
+umbriel-git \
 unrar \
 wl-clipboard \
 wl-mirror \
 wlsunset \
-xdg-desktop-portal-hyprland  \
 yazi  \
 zoxide \
 zram-generator \
@@ -71,7 +68,7 @@ mariadb \
 postgresql \
 power-profiles-daemon \
 systemd-resolved \
-systemd-zram-setup@zram0.service \
+systemd-zram-setup@zram0 \
 
 # Group
 docker

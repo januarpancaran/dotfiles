@@ -1,0 +1,12 @@
+[input.keyboard]
+layout = "us"
+options = "ctrl:nocaps"
+numlock_toggle = false
+
+[input.touchpad]
+tap = true
+natural_scroll = true
+
+[input.cursor]
+theme = "Bibata-Modern-Classic"
+size  = 24

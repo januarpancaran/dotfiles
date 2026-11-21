@@ -1,0 +1,125 @@
+[keybinds]
+
+# Programs
+"Mod+T" = { action = "spawn ghostty", repeat = false }
+"Mod+B" = { action = "spawn brave-origin", repeat = false }
+"Mod+I" = { action = "spawn brave-origin --incognito", repeat = false }
+"Mod+E" = { action = "spawn nautilus", repeat = false }
+"Mod+C" = { action = "spawn code", repeat = false }
+"Mod+Shift+C" = { action = "spawn env XDG_CURRENT_DESKTOP=gnome gnome-control-center", repeat = false }
+"Mod+Semicolon" = { action = "spawn env -u DISPLAY spotify --enable-wayland-ime", repeat = false }
+"Mod+D" = { action = "spawn discord", repeat = false }
+
+# Noctalia
+"Mod+R" = "spawn noctalia msg panel-toggle launcher"
+"Mod+S" = "spawn noctalia msg panel-toggle control-center"
+"Mod+Comma" = "spawn noctalia msg settings-toggle"
+
+# Volume
+"XF86AudioRaiseVolume" = { action = "spawn noctalia msg volume-up", allow_when_locked = true }
+"XF86AudioLowerVolume" = { action = "spawn noctalia msg volume-down", allow_when_locked = true }
+"XF86AudioMute" = { action = "spawn noctalia msg volume-mute", allow_when_locked = true }
+
+# Brightness
+"XF86MonBrightnessUp" = { action = "spawn noctalia msg brightness-up", allow_when_locked = true }
+"XF86MonBrightnessDown" = { action = "spawn noctalia msg brightness-down", allow_when_locked = true }
+
+"Mod+O" = { action = "overview-toggle", repeat = false }
+
+# Window Management
+"Mod+Q" = { action = "window-close", repeat = false }
+
+"Mod+H" = "window-focus-left"
+"Mod+L" = "window-focus-right"
+
+"Mod+Shift+H" = "column-move-left"
+"Mod+Shift+L" = "column-move-right"
+
+"Mod+J" = "window-focus-or-workspace-down"
+"Mod+K" = "window-focus-or-workspace-up"
+
+"Mod+Shift+J" = "window-move-or-workspace-down"
+"Mod+Shift+K" = "window-move-or-workspace-up"
+
+"Home" = "column-focus-first"
+"End" = "column-focus-last"
+
+"Ctrl+Home" = "column-move-to-first"
+"Ctrl+End" = "column-move-to-last"
+
+"Mod+Ctrl+H" = "output-focus-left"
+"Mod+Ctrl+L" = "output-focus-right"
+"Mod+Ctrl+J" = "output-focus-down"
+"Mod+Ctrl+K" = "output-focus-up"
+
+"Mod+Shift+Ctrl+H" = "column-move-to-output-left"
+"Mod+Shift+Ctrl+L" = "column-move-to-output-right"
+"Mod+Shift+Ctrl+J" = "column-move-to-output-down"
+"Mod+Shift+Ctrl+K" = "column-move-to-output-up"
+
+"Mod+Shift+U" = "workspace-move-down"
+"Mod+Shift+I" = "workspace-move-up"
+
+"Mod+WheelDown" = { action = "workspace-next", cooldown_ms = 150 }
+"Mod+WheelUp" = { action = "workspace-previous", cooldown_ms = 150 }
+"Mod+Ctrl+WheelDown" = { action = "column-move-to-workspace-next", cooldown_ms = 150 }
+"Mod+Ctrl+WheelUp" = { action = "column-move-to-workspace-previous", cooldown_ms = 150 }
+
+"Mod+WheelRight" = "window-focus-right"
+"Mod+WheelLeft" = "window-focus-left"
+"Mod+Ctrl+WheelRight" = "column-move-right"
+"Mod+Ctrl+WheelLeft" = "column-move-left"
+
+"Mod+Shift+WheelDown" = "window-focus-right"
+"Mod+Shift+WheelUp" = "window-focus-right"
+"Mod+Ctrl+Shift+WheelDown" = "column-move-right"
+"Mod+Ctrl+Shift+WheelUp" = "column-move-left"
+
+"Mod+BracketLeft" = "window-consume-or-expel-left"
+"Mod+BracketRight" = "window-consume-or-expel-right"
+"Mod+Period" = "window-consume-right"
+
+"Mod+Ctrl+W" = "window-cycle-primary-extent"
+"Mod+Ctrl+S" = "window-cycle-secondary-extent"
+"Mod+Ctrl+R" = "window-cycle-secondary-extent-back"
+
+"Mod+F" = { action = "window-toggle-fullscreen", repeat = false }
+"Mod+Ctrl+F" = { action = "window-toggle-maximize-to-edges", repeat = false }
+"Mod+Ctrl+C" = "column-center"
+
+"Mod+Minus" = "window-modify-primary-extent -0.1"
+"Mod+Equal" = "window-modify-primary-extent +0.1"
+"Mod+Shift+Minus" = "window-modify-secondary-extent -0.1"
+"Mod+Shift+Equal" = "window-modify-secondary-extent +0.1"
+
+"Mod+V" = { action = "window-toggle-floating", repeat = false }
+"Mod+Shift+V" = { action = "window-focus-switch-floating", repeat = false }
+"Mod+W" = { action = "column-toggle-tabbed", repeat = false }
+
+# Screenshots
+"Mod+Shift+S" = { action = "spawn sh -c 'file=\"$HOME/Pictures/Screenshots/Screenshot_$(date +%Y%m%d_%H%M%S).png\"; mkdir -p \"$HOME/Pictures/Screenshots\" && grim -g \"$(slurp)\" \"$file\" && cat \"$file\" | wl-copy && notify-send \"Screenshot saved & copied\" \"$file\" || notify-send -u critical \"Screenshot failed\" \"Region capture was cancelled or failed\"'", repeat = false }
+"Mod+Shift+P" = { action = "spawn sh -c 'output=$(umbriel outputs | awk \"/^[a-zA-Z0-9_-]+ / {name=\\$1} /Focused: yes/ {print name}\"); file=\"$HOME/Pictures/Screenshots/Screenshot_$(date +%Y%m%d_%H%M%S).png\"; mkdir -p \"$HOME/Pictures/Screenshots\" && grim ${output:+-o \"$output\"} \"$file\" && cat \"$file\" | wl-copy && notify-send \"Screenshot saved & copied\" \"$file\" || notify-send -u critical \"Screenshot failed\" \"Could not capture $output\"'", repeat = false }
+"Mod+P" = { action = "spawn sh -c 'geom=$(umbriel focused-window | sed -E \"s/.*\\\\[.* ([0-9]+)x([0-9]+)\\\\+?(-?[0-9]+)\\\\+?(-?[0-9]+)\\\\].*/\\\\3,\\\\4 \\\\1x\\\\2/\"); file=\"$HOME/Pictures/Screenshots/Screenshot_$(date +%Y%m%d_%H%M%S).png\"; mkdir -p \"$HOME/Pictures/Screenshots\" && grim -g \"$geom\" \"$file\" && cat \"$file\" | wl-copy && notify-send \"Screenshot saved & copied\" \"$file\" || notify-send -u critical \"Screenshot failed\" \"Could not capture active window\"'", repeat = false }
+
+"Mod+Escape" = { action = "shortcuts-inhibit-toggle", allow_when_inhibited = true, repeat = false }
+"Mod+Shift+M" = { action = "session-quit skip-confirmation", repeat = false }
+
+# Workspaces
+"Mod+1" = "workspace-switch 1"
+"Mod+Shift+1" = "column-move-to-workspace 1"
+"Mod+2" = "workspace-switch 2"
+"Mod+Shift+2" = "column-move-to-workspace 2"
+"Mod+3" = "workspace-switch 3"
+"Mod+Shift+3" = "column-move-to-workspace 3"
+"Mod+4" = "workspace-switch 4"
+"Mod+Shift+4" = "column-move-to-workspace 4"
+"Mod+5" = "workspace-switch 5"
+"Mod+Shift+5" = "column-move-to-workspace 5"
+"Mod+6" = "workspace-switch 6"
+"Mod+Shift+6" = "column-move-to-workspace 6"
+"Mod+7" = "workspace-switch 7"
+"Mod+Shift+7" = "column-move-to-workspace 7"
+"Mod+8" = "workspace-switch 8"
+"Mod+Shift+8" = "column-move-to-workspace 8"
+"Mod+9" = "workspace-switch 9"
+"Mod+Shift+9" = "column-move-to-workspace 9"

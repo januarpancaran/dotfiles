@@ -1,0 +1,26 @@
+# https://docs.noctalia.dev/umbriel/configuration/
+
+[include]
+files = [
+  "autostart.toml",
+  "env.toml",
+  "inputs.toml",
+  "outputs.toml",
+  "appearance.toml",
+  "binds.toml",
+  "rules.toml",
+]
+
+[include.optional]
+files = []
+
+[general]
+mod_key = "Super"
+xwayland = true
+xwayland_native_resolution = true
+show_cheatsheet = false
+
+[hot_corners.top_left]
+enabled = true
+delay_ms = 500
+action = "overview-open"
