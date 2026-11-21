@@ -55,6 +55,7 @@ telegram-desktop \
 trash-cli \
 unrar \
 wl-clipboard \
+wl-mirror \
 wlsunset \
 xdg-desktop-portal-hyprland  \
 yazi  \
