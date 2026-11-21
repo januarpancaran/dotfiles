@@ -24,7 +24,7 @@ start = [
 center = [ "clock" ]
 end = [
   "tray",
-  "profidev/hypr-screen-mirror:widget",
+  "elijaharch/wl-screen-mirror:mirror",
   "volume",
   "brightness",
   "bluetooth",
