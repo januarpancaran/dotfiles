@@ -32,6 +32,7 @@ hyprland-guiutils  \
 java-26-openjdk \
 libnotify-tools \
 loupe \
+mangohud \
 mariadb \
 mpv \
 neovim \
