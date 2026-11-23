@@ -10,6 +10,7 @@ source "$SCRIPTS_DIR/setup-packages.sh"
 source "$SCRIPTS_DIR/setup-brave.sh"
 source "$SCRIPTS_DIR/setup-tela-icons.sh"
 source "$SCRIPTS_DIR/setup-jetbrains-font.sh"
+source "$SCRIPTS_DIR/setup-dracula-gtk4.sh"
 source "$SCRIPTS_DIR/setup-hyprland.sh"
 source "$SCRIPTS_DIR/setup-umbriel.sh"
 source "$SCRIPTS_DIR/setup-services.sh"
@@ -64,6 +65,9 @@ main() {
 
   echo ""
   install_opi_packages
+
+  echo ""
+  setup_dracula_gtk4
 
   echo ""
   setup_brave
