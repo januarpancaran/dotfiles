@@ -31,3 +31,13 @@ hl.window_rule({
   idle_inhibit = "always",
   suppress_event = "activate",
 })
+
+-- XDM download window should always float
+hl.window_rule({
+  name = "xdm-download-float",
+  match = {
+    class = "^xdm-app$",
+    title = "^New download$",
+  },
+  float = true,
+})
