@@ -10,6 +10,7 @@ copy_configs() {
     MangoHud
     fastfetch
     ghostty
+    hypr
     mpv
     noctalia
     starship
