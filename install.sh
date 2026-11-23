@@ -8,6 +8,7 @@ SCRIPTS_DIR="$ROOT_DIR/scripts"
 source "$SCRIPTS_DIR/utils.sh"
 source "$SCRIPTS_DIR/setup-packages.sh"
 source "$SCRIPTS_DIR/setup-brave.sh"
+source "$SCRIPTS_DIR/setup-tela-icons.sh"
 source "$SCRIPTS_DIR/setup-hyprland.sh"
 source "$SCRIPTS_DIR/setup-umbriel.sh"
 source "$SCRIPTS_DIR/setup-services.sh"
@@ -65,6 +66,9 @@ main() {
 
   echo ""
   setup_brave
+
+  echo ""
+  setup_tela_icons
 
   echo ""
   echo "================================================"
