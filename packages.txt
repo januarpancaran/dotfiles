@@ -3,7 +3,6 @@
 ImageMagick  \
 ProtonPlus \
 bat \
-brave-origin  \
 chafa  \
 discord \
 docker  \
@@ -51,7 +50,6 @@ steam \
 systemd-resolved \
 telegram-desktop \
 trash-cli \
-umbriel-git \
 unrar \
 wl-clipboard \
 wl-mirror \
@@ -75,6 +73,7 @@ docker
 
 # Opi
 bibata
+brave-origin
 codecs
 dotnet
 dracula
@@ -82,3 +81,6 @@ onlyoffice
 spotify
 vscode
 zotero
+
+# Obs
+umbriel-git
