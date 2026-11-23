@@ -4,16 +4,22 @@ Automated installation script for openSUSE Tumbleweed dotfiles and system config
 
 ## Features
 
-- **Automated Package Installation**: Installs all packages from `packages.txt`
+- **Automated Package Installation**: Installs essential packages
   - Official openSUSE packages via `zypper`
   - Third-party packages via `opi`
-  - OBS packages (Umbriel compositor)
+  - Brave browser from official repository
+- **Compositor Selection**: Choose between Hyprland or Umbriel
+- **Theme & Font Setup**:
+  - Tela nord icon theme
+  - JetBrains Mono Nerd Font
+  - Dracula GTK-4 theme for Nautilus
 - **System Configuration**:
   - Cloudflare Family DNS with DNS-over-TLS (optional)
   - ZRAM swap configuration (optional)
   - Systemd services management
   - User groups configuration
-- **Dotfiles Management**: Copies all configuration files with automatic backups
+  - Graphical boot target
+- **Dotfiles Management**: Copies compositor-specific configurations with automatic backups
 - **Modular Design**: Easy to maintain and customize
 
 ## Prerequisites
@@ -45,7 +51,6 @@ cd ~/Documents/github/dotfiles
 
 #### Third-party Packages (via opi)
 - Bibata cursor theme
-- Brave browser (brave-origin)
 - Multimedia codecs
 - .NET SDK
 - Dracula theme
@@ -54,9 +59,22 @@ cd ~/Documents/github/dotfiles
 - VS Code
 - Zotero
 
-#### OBS Packages
-- Umbriel compositor (Noctalia repository)
-- Noctalia shell
+#### Themes & Fonts
+- Tela nord icon theme (from GitHub)
+- JetBrains Mono Nerd Font (from GitHub releases)
+- Dracula GTK-4 theme symlinks for Nautilus
+
+#### Compositor (Choose One)
+**Hyprland**:
+- hyprland, hyprland-guiutils, hyprland-devel
+- xdg-desktop-portal-hyprland
+- Noctalia (from Tumbleweed repo)
+- Noctalia plugin: profidev/hypr-screen-mirror
+
+**Umbriel**:
+- umbriel-git (from OBS Noctalia repository)
+- Noctalia (from OBS repo, newer version)
+- Noctalia plugin: elijaharch/wl-screen-mirror
 
 #### System Services
 Automatically enabled:
@@ -67,6 +85,8 @@ Automatically enabled:
 - power-profiles-daemon
 - systemd-resolved
 - systemd-zram-setup@zram0 (if ZRAM is configured)
+
+Default boot target set to: `graphical.target`
 
 #### User Groups
 - docker
@@ -79,7 +99,8 @@ Copied to `~/.config/`:
 - mpv
 - noctalia
 - starship
-- umbriel
+- **hypr** (if Hyprland is selected)
+- **umbriel** (if Umbriel is selected)
 
 Copied to `~/`:
 - .bashrc
@@ -91,7 +112,17 @@ Copied to `~/`:
 
 During installation, you'll be prompted for:
 
-### 1. Cloudflare DNS Configuration
+### 1. Compositor Selection (Required)
+Choose between:
+- **Hyprland**: Popular Wayland compositor with Lua configuration
+- **Umbriel**: Alternative compositor with TOML configuration
+
+The installer will:
+- Install compositor-specific packages
+- Configure Noctalia with the appropriate screen mirror plugin
+- Copy only the relevant compositor configuration files
+
+### 2. Cloudflare DNS Configuration (Optional)
 Configures Cloudflare Family DNS (1.1.1.3) with:
 - DNS-over-TLS encryption
 - Malware blocking
@@ -104,7 +135,7 @@ Configures Cloudflare Family DNS (1.1.1.3) with:
 - `/etc/sysconfig/network/config`
 - `/etc/resolv.conf`
 
-### 2. ZRAM Configuration
+### 2. ZRAM Configuration (Optional)
 Configures compressed swap in RAM:
 - Size: 50% of physical RAM
 - Compression: zstd
@@ -112,7 +143,7 @@ Configures compressed swap in RAM:
 
 **File created**: `/etc/systemd/zram-generator.conf`
 
-### 3. Shell Change
+### 3. Shell Change (Optional)
 Option to change default shell to zsh.
 
 ## Script Structure
@@ -120,11 +151,17 @@ Option to change default shell to zsh.
 ```
 dotfiles/
 ├── install.sh                    # Main orchestrator
-├── packages.txt                  # Package list
+├── hypr/                         # Hyprland configuration
+├── umbriel/                      # Umbriel configuration
+├── noctalia/                     # Noctalia configuration
 └── scripts/
     ├── utils.sh                  # Core utilities
     ├── setup-packages.sh         # Package installation
     ├── setup-brave.sh            # Brave browser setup
+    ├── setup-tela-icons.sh       # Tela icon theme
+    ├── setup-jetbrains-font.sh   # JetBrains Mono Nerd Font
+    ├── setup-dracula-gtk4.sh     # Dracula GTK-4 symlinks
+    ├── setup-hyprland.sh         # Hyprland compositor
     ├── setup-umbriel.sh          # Umbriel compositor
     ├── setup-services.sh         # Systemd services
     ├── setup-groups.sh           # User groups
@@ -165,7 +202,7 @@ The script automatically backs up existing configuration files before overwritin
 ## Troubleshooting
 
 ### Package Installation Failures
-Some package names in `packages.txt` may not match exactly with openSUSE repositories. If a package fails:
+Some packages may fail to install. If this happens:
 
 ```bash
 # Search for the correct package name
@@ -183,19 +220,19 @@ systemctl status <service-name>
 sudo zypper install <package-providing-service>
 ```
 
-### OPI Not Found
-If `opi` is not available:
+### Font Not Showing Up
+After font installation, update font cache:
 
 ```bash
-sudo zypper install opi
+fc-cache -fv
 ```
 
-### Brave Installation Issues
-Brave requires a two-step process:
-1. `opi brave` - Adds repository and signs keys
-2. `zypper install brave-origin` - Installs the actual browser
+### Compositor Not Starting
+Make sure you logged out and back in after installation. Check if GDM is running:
 
-This is handled automatically by the script.
+```bash
+systemctl status gdm
+```
 
 ## Manual Installation Steps
 
@@ -208,38 +245,66 @@ cd ~/Documents/github/dotfiles
 sudo zypper refresh
 
 # 2. Install packages
-./scripts/setup-packages.sh
+source scripts/utils.sh
+source scripts/setup-packages.sh
+install_zypper_packages
+install_opi_packages
 
-# 3. Setup Brave
+# 3. Setup themes and fonts
+./scripts/setup-dracula-gtk4.sh
+./scripts/setup-tela-icons.sh
+./scripts/setup-jetbrains-font.sh
+
+# 4. Setup Brave
 ./scripts/setup-brave.sh
 
-# 4. Install Umbriel
+# 5. Install compositor (choose one)
+./scripts/setup-hyprland.sh   # OR
 ./scripts/setup-umbriel.sh
 
-# 5. Enable services
-./scripts/setup-services.sh
+# 6. Enable services
+source scripts/setup-services.sh
+enable_services
 
-# 6. Add user to groups
-./scripts/setup-groups.sh
+# 7. Add user to groups
+source scripts/setup-groups.sh
+add_user_groups
 
-# 7. Copy configs
-./scripts/setup-configs.sh
+# 8. Copy configs (set COMPOSITOR_CHOICE first)
+export COMPOSITOR_CHOICE="hyprland"  # or "umbriel"
+source scripts/setup-configs.sh
+copy_configs
 
-# 8. Optional: Configure DNS
-./scripts/setup-dns.sh
+# 9. Optional: Configure DNS
+source scripts/setup-dns.sh
+setup_cloudflare_dns
 
-# 9. Optional: Configure ZRAM
-./scripts/setup-zram.sh
+# 10. Optional: Configure ZRAM
+source scripts/setup-zram.sh
+setup_zram
 ```
 
 ## Customization
 
 ### Adding Packages
-Edit `packages.txt` and add packages under the appropriate section:
-- `# Zypper` - Official openSUSE packages
-- `# Opi` - Third-party packages
-- `# Services` - Services to enable
-- `# Group` - Groups to add user to
+Add packages to the arrays in `scripts/setup-packages.sh`:
+- `ZYPPER_PACKAGES` - Official openSUSE packages
+- `OPI_PACKAGES` - Third-party packages
+
+### Switching Compositors Later
+To switch from one compositor to another:
+
+```bash
+# If switching to Hyprland
+export COMPOSITOR_CHOICE="hyprland"
+./scripts/setup-hyprland.sh
+source scripts/setup-configs.sh && copy_configs
+
+# If switching to Umbriel
+export COMPOSITOR_CHOICE="umbriel"
+./scripts/setup-umbriel.sh
+source scripts/setup-configs.sh && copy_configs
+```
 
 ### Modifying Configurations
 Edit the respective script in `scripts/` directory.

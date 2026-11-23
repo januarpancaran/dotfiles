@@ -11,14 +11,33 @@ cd ~/Documents/github/dotfiles && ./install.sh
 The script will:
 1. ✅ Refresh package repositories
 2. ✅ Install ~60+ packages (this takes the longest)
-3. ✅ Setup Brave browser with correct repository
-4. ✅ Install Umbriel compositor from OBS
-5. ✅ Enable system services (docker, gdm, databases, etc.)
-6. ✅ Add you to the docker group
-7. ✅ Copy all config files (with backups)
-8. ❓ Ask if you want Cloudflare DNS (optional)
-9. ❓ Ask if you want ZRAM (optional)
-10. ❓ Ask if you want to change shell to zsh (optional)
+3. ✅ Setup Dracula GTK-4 theme symlinks
+4. ✅ Setup Brave browser from official repository
+5. ✅ Install Tela nord icon theme
+6. ✅ Install JetBrains Mono Nerd Font
+7. ❓ Ask you to choose: **Hyprland or Umbriel compositor**
+8. ✅ Enable system services and set graphical boot target
+9. ✅ Add you to the docker group
+10. ✅ Copy compositor-specific config files (with backups)
+11. ❓ Ask if you want Cloudflare DNS (optional)
+12. ❓ Ask if you want ZRAM (optional)
+13. ❓ Ask if you want to change shell to zsh (optional)
+
+## Compositor Choice
+
+You'll be asked to choose between:
+
+**1) Hyprland**
+- Lua configuration
+- Uses Noctalia from Tumbleweed repo
+- Screen mirror plugin: profidev/hypr-screen-mirror
+
+**2) Umbriel**
+- TOML configuration
+- Uses Noctalia from OBS repo (newer)
+- Screen mirror plugin: elijaharch/wl-screen-mirror
+
+Only the config for your chosen compositor will be copied to `~/.config/`.
 
 ## Post-Installation (IMPORTANT!)
 
@@ -53,16 +72,28 @@ sudo zypper install <package-name>
 
 ```bash
 # Just install packages
-./scripts/setup-packages.sh
+source scripts/utils.sh
+source scripts/setup-packages.sh
+install_zypper_packages
 
-# Just copy configs
-./scripts/setup-configs.sh
+# Just install Hyprland
+./scripts/setup-hyprland.sh
+
+# Just install Umbriel
+./scripts/setup-umbriel.sh
+
+# Just copy configs (set compositor first)
+export COMPOSITOR_CHOICE="hyprland"  # or "umbriel"
+source scripts/setup-configs.sh
+copy_configs
 
 # Just setup DNS
-./scripts/setup-dns.sh
+source scripts/setup-dns.sh
+setup_cloudflare_dns
 
 # Just setup ZRAM
-./scripts/setup-zram.sh
+source scripts/setup-zram.sh
+setup_zram
 ```
 
 ## Backups
@@ -72,6 +103,22 @@ All existing configs are automatically backed up:
 - Location: Same directory as original file
 
 ## Common Issues
+
+### Compositor not starting
+**Solution**: Make sure you logged out and back in
+```bash
+systemctl status gdm
+```
+
+### Font not showing in terminal
+**Solution**: Update font cache
+```bash
+fc-cache -fv
+fc-list | grep JetBrains
+```
+
+### Noctalia screen mirror plugin wrong
+**Solution**: Check which compositor you chose. The plugin is automatically configured based on your selection.
 
 ### Package not found
 **Solution**: Search for the correct name
@@ -93,7 +140,9 @@ chmod +x install.sh scripts/*.sh
 
 ## Customization
 
-Edit `packages.txt` to add/remove packages before running the installer.
+To add more packages, edit the arrays in `scripts/setup-packages.sh`:
+- `ZYPPER_PACKAGES` - Official repos
+- `OPI_PACKAGES` - Third-party repos
 
 ## Need Help?
 
