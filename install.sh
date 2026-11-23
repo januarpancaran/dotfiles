@@ -84,10 +84,12 @@ main() {
   case "$compositor_choice" in
   1)
     echo "Installing Hyprland..."
+    export COMPOSITOR_CHOICE="hyprland"
     setup_hyprland
     ;;
   2)
     echo "Installing Umbriel..."
+    export COMPOSITOR_CHOICE="umbriel"
     install_obs_packages
     ;;
   *)
