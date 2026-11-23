@@ -76,8 +76,8 @@ main() {
   echo "================================================"
   echo ""
   echo "Choose your compositor:"
-  echo "1) Hyprland (uses Noctalia from Tumbleweed repo)"
-  echo "2) Umbriel (uses Noctalia from OBS repo)"
+  echo "1) Hyprland"
+  echo "2) Umbriel"
   echo ""
   read -rp "Enter choice [1-2]: " compositor_choice
   
