@@ -5,7 +5,7 @@ setup_jetbrains_font() {
 
   local font_dir="$HOME/.fonts/JetBrainsMono"
 
-  if [ -d "$font_dir" ] && [ -n "$(ls -A "$font_dir"/*.ttf 2>/dev/null)" ]; then
+  if fc-list | grep -qi "JetBrainsMono Nerd Font"; then
     echo "JetBrains Mono Nerd Font already installed, skipping..."
     return 0
   fi
