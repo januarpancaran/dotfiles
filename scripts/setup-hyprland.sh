@@ -12,12 +12,12 @@ setup_hyprland() {
   fi
 
   echo "Configuring Noctalia screen mirror plugin for Hyprland..."
-  if [ -f "$CONF_DIR/noctalia/plugins.toml" ]; then
-    sed -i 's|elijaharch/wl-screen-mirror|profidev/hypr-screen-mirror|g' "$CONF_DIR/noctalia/plugins.toml"
+  if [ -f "$ROOT_DIR/noctalia/plugins.toml" ]; then
+    sed -i 's|elijaharch/wl-screen-mirror|profidev/hypr-screen-mirror|g' "$ROOT_DIR/noctalia/plugins.toml"
   fi
 
-  if [ -f "$CONF_DIR/noctalia/bar.toml" ]; then
-    sed -i 's|elijaharch/wl-screen-mirror:mirror|profidev/hypr-screen-mirror:widget|g' "$CONF_DIR/noctalia/bar.toml"
+  if [ -f "$ROOT_DIR/noctalia/bar.toml" ]; then
+    sed -i 's|elijaharch/wl-screen-mirror:mirror|profidev/hypr-screen-mirror:widget|g' "$ROOT_DIR/noctalia/bar.toml"
   fi
 
   echo "Hyprland installed successfully"
