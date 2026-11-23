@@ -3,6 +3,8 @@
 setup_hyprland() {
   echo "Setting up Hyprland compositor..."
 
+  set_config_dir
+
   echo "Installing Hyprland packages..."
   if ! install_cmd hyprland hyprland-guiutils hyprland-devel xdg-desktop-portal-hyprland noctalia; then
     echo "Failed to install Hyprland packages"
