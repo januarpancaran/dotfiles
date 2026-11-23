@@ -22,6 +22,13 @@ enable_services() {
     fi
   done
 
+  echo ""
+  echo "Setting default target to graphical.target..."
+  if ! "$SUDO_CMD" systemctl set-default graphical.target; then
+    echo "Warning: Failed to set default target to graphical.target"
+    failed_services+=("graphical.target")
+  fi
+
   if [ ${#failed_services[@]} -gt 0 ]; then
     echo ""
     echo "The following services failed to enable:"
