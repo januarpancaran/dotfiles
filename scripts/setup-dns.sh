@@ -8,7 +8,7 @@ setup_cloudflare_dns() {
   "$SUDO_CMD" mkdir -p /etc/systemd/resolved.conf.d
   "$SUDO_CMD" tee /etc/systemd/resolved.conf.d/cloudflare.conf > /dev/null <<'EOF'
 [Resolve]
-DNS=1.1.1.3#family.cloudflare-dns.com 1.0.0.3#family.cloudflare-dns.com 2606:4700:4700::1113#family.cloudflare-dns.com 2606:4700:4700::1003#family.cloudflare-dns.com
+DNS=1.1.1.1 1.0.0.1 2606:4700:4700::1111 2606:4700:4700::1001
 FallbackDNS=
 Domains=~.
 DNSOverTLS=yes
@@ -46,6 +46,6 @@ EOF
 
   echo ""
   echo "Cloudflare DNS configured successfully!"
-  echo "DNS: 1.1.1.3 (Cloudflare Family with Malware and Adult Content blocking)"
+  echo "DNS: 1.1.1.1"
   echo "DNS-over-TLS: Enabled"
 }
