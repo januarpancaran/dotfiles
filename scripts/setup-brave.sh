@@ -7,10 +7,7 @@ setup_brave() {
     echo "Brave repository already exists, skipping..."
   else
     echo "Adding Brave repository..."
-    if ! add_repo brave-browser https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo; then
-      echo "Failed to add Brave repository"
-      return 1
-    fi
+    add_repo brave-browser https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
   fi
 
   echo "Installing brave-origin package..."
