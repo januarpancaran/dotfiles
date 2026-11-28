@@ -55,6 +55,7 @@ wl-clipboard \
 wl-mirror \
 wlsunset \
 yazi  \
+zed \
 zoxide \
 zram-generator \
 zsh \
@@ -79,5 +80,4 @@ dotnet
 dracula
 onlyoffice
 spotify
-vscode
 zotero

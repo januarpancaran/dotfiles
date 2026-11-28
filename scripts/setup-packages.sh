@@ -58,6 +58,7 @@ ZYPPER_PACKAGES=(
   wl-mirror
   wlsunset
   yazi
+  zed
   zoxide
   zram-generator
   zsh
@@ -70,7 +71,6 @@ OPI_PACKAGES=(
   dracula
   onlyoffice
   spotify
-  vscode
   zotero
 )
 
