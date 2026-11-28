@@ -11,10 +11,7 @@ setup_brave() {
   fi
 
   echo "Installing brave-origin package..."
-  if ! install_cmd brave-origin; then
-    echo "Failed to install brave-origin"
-    return 1
-  fi
+  install_cmd brave-origin
 
   echo "Brave browser installed successfully"
 }
