@@ -15,13 +15,29 @@ The script will:
 4. ✅ Setup Brave browser from official repository
 5. ✅ Install Tela nord icon theme
 6. ✅ Install JetBrains Mono Nerd Font
-7. ✅ Install Umbriel compositor
+7. ❓ Ask you to choose: **Hyprland or Umbriel compositor**
 8. ✅ Enable system services and set graphical boot target
 9. ✅ Add you to the docker group
-10. ✅ Copy config files (with backups)
+10. ✅ Copy compositor-specific config files (with backups)
 11. ❓ Ask if you want Cloudflare DNS (optional)
 12. ❓ Ask if you want ZRAM (optional)
 13. ❓ Ask if you want to change shell to zsh (optional)
+
+## Compositor Choice
+
+You'll be asked to choose between:
+
+**1) Hyprland**
+- Lua configuration
+- Uses Noctalia from Tumbleweed repo
+- Screen mirror plugin: profidev/hypr-screen-mirror
+
+**2) Umbriel**
+- TOML configuration
+- Uses Noctalia from OBS repo (newer)
+- Screen mirror plugin: elijaharch/wl-screen-mirror
+
+Only the config for your chosen compositor will be copied to `~/.config/`.
 
 ## Post-Installation (IMPORTANT!)
 
@@ -60,10 +76,14 @@ source scripts/utils.sh
 source scripts/setup-packages.sh
 install_zypper_packages
 
+# Just install Hyprland
+./scripts/setup-hyprland.sh
+
 # Just install Umbriel
 ./scripts/setup-umbriel.sh
 
-# Just copy configs
+# Just copy configs (set compositor first)
+export COMPOSITOR_CHOICE="hyprland"  # or "umbriel"
 source scripts/setup-configs.sh
 copy_configs
 
@@ -96,6 +116,9 @@ systemctl status gdm
 fc-cache -fv
 fc-list | grep JetBrains
 ```
+
+### Noctalia screen mirror plugin wrong
+**Solution**: Check which compositor you chose. The plugin is automatically configured based on your selection.
 
 ### Package not found
 **Solution**: Search for the correct name
