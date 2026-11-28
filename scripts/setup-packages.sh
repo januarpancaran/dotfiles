@@ -27,6 +27,7 @@ ZYPPER_PACKAGES=(
   google-noto-fonts
   google-noto-sans-cjk-fonts
   grim
+  htop
   java-27-openjdk-devel
   libnotify-tools
   loupe
