@@ -12,7 +12,6 @@ source "$SCRIPTS_DIR/setup-tela-icons.sh"
 source "$SCRIPTS_DIR/setup-jetbrains-font.sh"
 source "$SCRIPTS_DIR/setup-dracula-gtk4.sh"
 source "$SCRIPTS_DIR/setup-hyprland.sh"
-source "$SCRIPTS_DIR/setup-umbriel.sh"
 source "$SCRIPTS_DIR/setup-services.sh"
 source "$SCRIPTS_DIR/setup-groups.sh"
 source "$SCRIPTS_DIR/setup-dns.sh"
@@ -35,7 +34,6 @@ print_summary() {
   echo ""
   echo "✓ System packages installed"
   echo "✓ Third-party packages installed"
-  echo "✓ Compositor installed"
   echo "✓ System services enabled"
   echo "✓ User groups configured"
   echo "✓ Configuration files copied"
@@ -79,31 +77,7 @@ main() {
   setup_jetbrains_font
 
   echo ""
-  echo "================================================"
-  echo "  Compositor Selection"
-  echo "================================================"
-  echo ""
-  echo "Choose your compositor:"
-  echo "1) Hyprland"
-  echo "2) Umbriel"
-  echo ""
-  read -rp "Enter choice [1-2]: " compositor_choice
-  
-  case "$compositor_choice" in
-  1)
-    echo "Installing Hyprland..."
-    export COMPOSITOR_CHOICE="hyprland"
-    setup_hyprland
-    ;;
-  2)
-    echo "Installing Umbriel..."
-    export COMPOSITOR_CHOICE="umbriel"
-    install_obs_packages
-    ;;
-  *)
-    echo "Invalid choice. Skipping compositor installation."
-    ;;
-  esac
+  setup_hyprland
 
   echo ""
   enable_services

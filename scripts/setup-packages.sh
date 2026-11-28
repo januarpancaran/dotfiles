@@ -124,7 +124,3 @@ install_opi_packages() {
     printf '%s\n' "${failed_packages[@]}"
   fi
 }
-
-install_obs_packages() {
-  setup_umbriel
-}

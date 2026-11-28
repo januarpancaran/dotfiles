@@ -8,7 +8,7 @@ Automated installation script for openSUSE Tumbleweed dotfiles and system config
   - Official openSUSE packages via `zypper`
   - Third-party packages via `opi`
   - Brave browser from official repository
-- **Compositor Selection**: Choose between Hyprland or Umbriel
+- **Hyprland Compositor**: Wayland compositor with Lua configuration
 - **Theme & Font Setup**:
   - Tela nord icon theme
   - JetBrains Mono Nerd Font
@@ -19,7 +19,7 @@ Automated installation script for openSUSE Tumbleweed dotfiles and system config
   - Systemd services management
   - User groups configuration
   - Graphical boot target
-- **Dotfiles Management**: Copies compositor-specific configurations with automatic backups
+- **Dotfiles Management**: Copies configurations with automatic backups
 - **Modular Design**: Easy to maintain and customize
 
 ## Prerequisites
@@ -64,17 +64,12 @@ cd ~/Documents/github/dotfiles
 - JetBrains Mono Nerd Font (from GitHub releases)
 - Dracula GTK-4 theme symlinks for Nautilus
 
-#### Compositor (Choose One)
+#### Compositor
 **Hyprland**:
 - hyprland, hyprland-guiutils, hyprland-devel
 - xdg-desktop-portal-hyprland
 - Noctalia (from Tumbleweed repo)
 - Noctalia plugin: profidev/hypr-screen-mirror
-
-**Umbriel**:
-- umbriel-git (from OBS Noctalia repository)
-- Noctalia (from OBS repo, newer version)
-- Noctalia plugin: elijaharch/wl-screen-mirror
 
 #### System Services
 Automatically enabled:
@@ -96,11 +91,10 @@ Copied to `~/.config/`:
 - MangoHud
 - fastfetch
 - ghostty
+- hypr
 - mpv
 - noctalia
 - starship
-- **hypr** (if Hyprland is selected)
-- **umbriel** (if Umbriel is selected)
 
 Copied to `~/`:
 - .bashrc
@@ -112,17 +106,7 @@ Copied to `~/`:
 
 During installation, you'll be prompted for:
 
-### 1. Compositor Selection (Required)
-Choose between:
-- **Hyprland**: Popular Wayland compositor with Lua configuration
-- **Umbriel**: Alternative compositor with TOML configuration
-
-The installer will:
-- Install compositor-specific packages
-- Configure Noctalia with the appropriate screen mirror plugin
-- Copy only the relevant compositor configuration files
-
-### 2. Cloudflare DNS Configuration (Optional)
+### 1. Cloudflare DNS Configuration (Optional)
 Configures Cloudflare Family DNS (1.1.1.3) with:
 - DNS-over-TLS encryption
 - Malware blocking
@@ -152,7 +136,6 @@ Option to change default shell to zsh.
 dotfiles/
 ├── install.sh                    # Main orchestrator
 ├── hypr/                         # Hyprland configuration
-├── umbriel/                      # Umbriel configuration
 ├── noctalia/                     # Noctalia configuration
 └── scripts/
     ├── utils.sh                  # Core utilities
@@ -162,7 +145,6 @@ dotfiles/
     ├── setup-jetbrains-font.sh   # JetBrains Mono Nerd Font
     ├── setup-dracula-gtk4.sh     # Dracula GTK-4 symlinks
     ├── setup-hyprland.sh         # Hyprland compositor
-    ├── setup-umbriel.sh          # Umbriel compositor
     ├── setup-services.sh         # Systemd services
     ├── setup-groups.sh           # User groups
     ├── setup-dns.sh              # DNS configuration
@@ -258,9 +240,8 @@ install_opi_packages
 # 4. Setup Brave
 ./scripts/setup-brave.sh
 
-# 5. Install compositor (choose one)
-./scripts/setup-hyprland.sh   # OR
-./scripts/setup-umbriel.sh
+# 5. Install Hyprland compositor
+./scripts/setup-hyprland.sh
 
 # 6. Enable services
 source scripts/setup-services.sh
@@ -270,8 +251,7 @@ enable_services
 source scripts/setup-groups.sh
 add_user_groups
 
-# 8. Copy configs (set COMPOSITOR_CHOICE first)
-export COMPOSITOR_CHOICE="hyprland"  # or "umbriel"
+# 8. Copy configs
 source scripts/setup-configs.sh
 copy_configs
 
@@ -290,21 +270,6 @@ setup_zram
 Add packages to the arrays in `scripts/setup-packages.sh`:
 - `ZYPPER_PACKAGES` - Official openSUSE packages
 - `OPI_PACKAGES` - Third-party packages
-
-### Switching Compositors Later
-To switch from one compositor to another:
-
-```bash
-# If switching to Hyprland
-export COMPOSITOR_CHOICE="hyprland"
-./scripts/setup-hyprland.sh
-source scripts/setup-configs.sh && copy_configs
-
-# If switching to Umbriel
-export COMPOSITOR_CHOICE="umbriel"
-./scripts/setup-umbriel.sh
-source scripts/setup-configs.sh && copy_configs
-```
 
 ### Modifying Configurations
 Edit the respective script in `scripts/` directory.

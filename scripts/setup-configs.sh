@@ -10,17 +10,11 @@ copy_configs() {
     MangoHud
     fastfetch
     ghostty
+    hypr
     mpv
     noctalia
     starship
   )
-
-  # Add compositor-specific config
-  if [ "${COMPOSITOR_CHOICE:-}" = "hyprland" ]; then
-    conf_dirs+=(hypr)
-  elif [ "${COMPOSITOR_CHOICE:-}" = "umbriel" ]; then
-    conf_dirs+=(umbriel)
-  fi
 
   # Home files to copy to ~/
   local -a home_files=(
