@@ -33,7 +33,7 @@ backup_file() {
 }
 
 install_cmd() {
-  "$SUDO_CMD" zypper --no-refresh install -y "$@"
+  "$SUDO_CMD" zypper --no-refresh install -y --auto-agree-with-licenses "$@"
 }
 
 update_cmd() {
@@ -64,7 +64,7 @@ add_group() {
 }
 
 enable_service() {
-  "$SUDO_CMD" systemctl enable --now "$@"
+  "$SUDO_CMD" systemctl enable "$@"
 }
 
 user_choice() {
