@@ -1,11 +1,11 @@
 #!/bin/bash
 
-GROUPS=(docker)
+USER_GROUPS=(docker)
 
 add_user_groups() {
   echo "Adding user to groups..."
 
-  for group in "${GROUPS[@]}"; do
+  for group in "${USER_GROUPS[@]}"; do
     if ! getent group "$group" > /dev/null; then
       echo "Warning: Group $group does not exist. Skipping..."
       continue
