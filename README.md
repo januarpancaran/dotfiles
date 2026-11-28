@@ -62,7 +62,9 @@ cd ~/Documents/github/dotfiles
 #### Themes & Fonts
 - Tela nord icon theme (from GitHub)
 - JetBrains Mono Nerd Font (from GitHub releases)
-- Dracula GTK-4 theme symlinks for Nautilus
+- Dracula GTK theme with custom settings
+  - GTK-3.0 and GTK-4.0 settings.ini (Bibata cursor, Tela icons, dark theme)
+  - Dracula GTK-4 theme symlinks for Nautilus
 
 #### Compositor
 **Hyprland**:

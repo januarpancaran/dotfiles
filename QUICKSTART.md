@@ -11,7 +11,7 @@ cd ~/Documents/github/dotfiles && ./install.sh
 The script will:
 1. ✅ Refresh package repositories
 2. ✅ Install ~60+ packages (this takes the longest)
-3. ✅ Setup Dracula GTK-4 theme symlinks
+3. ✅ Setup Dracula GTK theme with custom settings
 4. ✅ Setup Brave browser from official repository
 5. ✅ Install Tela nord icon theme
 6. ✅ Install JetBrains Mono Nerd Font
